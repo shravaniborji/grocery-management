@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Management</title>
+<style>
+
+    body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/1449032425/photo/shopping-bag-full-of-healthy-food-on-blue.jpg?s=612x612&w=0&k=20&c=856XpqRgq8Bj9Mr28VzAdW-iTyHEj_dW01m6SPPHsOU=');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-color : aqua
+        }
+
+    .add-form {
+        display: none;
+    }
+
+    
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .delete-btn {
+        background-color: #ff6666;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .add-form {
+        display: none;
+        width: 20%; /* Adjust the width as needed */
+        margin: 20px auto; /* Center horizontally */
+        padding: 20px;
+        background-color: rgb(183, 173, 230);;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-issue-container {
+        text-align: center; /* Center the content horizontally */
+        margin-bottom: 20px; /* Add some space below the button */
+        margin-top: 20px;
+    }
+
+    .add-issue-btn {
+        background-color: rgb(5, 155, 42);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 50px; /* Change the font size */
+        color :rgb(32, 1, 135)
+    } 
+
+</style>
+</head>
+<body>
+
+<h1 style="text-align: center; width: 100%;">Contact us</h1>
+
+<div class="add-issue-container">
+    <button class="add-issue-btn" onclick="toggleForm()">Add issue</button>
+</div>
+
+<div class="add-form" id="addForm">
+
+    <h2>Add issue</h2>
+
+    <form action="/contact_us1" method="post">
+        
+        <label for="customer_name">customer_name:</label><br>
+        <input type="text" name="customer_name"><br>
+
+        <label for="mobile_no">mobile_no:</label><br>
+        <input type="number" name="mobile_no"><br><br>
+
+        <label for="email">email:</label><br>
+        <input type="text" name="email"><br><br>
+
+        <label for="issue">issue:</label><br>
+        <input type="text" name="issue"><br><br>
+
+        <input type="submit" value="Submit"><br><br>
+        
+    </form>
+</div>
+
+
+<script>
+    function toggleForm() {
+        var form = document.getElementById("addForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

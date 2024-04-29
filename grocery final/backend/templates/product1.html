@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Management</title>
+<style>
+
+    body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/1449032425/photo/shopping-bag-full-of-healthy-food-on-blue.jpg?s=612x612&w=0&k=20&c=856XpqRgq8Bj9Mr28VzAdW-iTyHEj_dW01m6SPPHsOU=');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-color : aqua
+        }
+
+    .add-form {
+        display: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 30%;
+        margin: 0 auto;
+        margin-left: auto;
+        background-color: rgb(183, 173, 230);
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .delete-btn {
+        background-color: #ff6666;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .add-form {
+        display: none;
+        width: 20%; /* Adjust the width as needed */
+        margin: 20px auto; /* Center horizontally */
+        padding: 20px;
+        background-color: rgb(183, 173, 230);;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-product-container {
+        text-align: center; /* Center the content horizontally */
+        margin-bottom: 20px; /* Add some space below the button */
+        margin-top: 20px;
+    }
+
+    .add-product-btn {
+        background-color: rgb(5, 155, 42);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 50px; /* Change the font size */
+        color :rgb(32, 1, 135)
+    } 
+
+</style>
+</head>
+<body>
+
+<h1 style="text-align: center; width: 100%;">Grocery List</h1>
+
+<div class="add-product-container">
+    <button class="add-product-btn" onclick="toggleForm()">Add Product</button>
+</div>
+
+<div class="add-form" id="addForm">
+
+    <h2>Add Product</h2>
+
+    <form action="/product1" method="post">
+        <label for="product_id">product_id:</label><br>
+        <input type="number" id="product_id" name="product_id" step="1"><br>
+
+        <label for="name">name:</label><br>
+        <input type="text" name="name"><br>
+
+        <label for="unit">unit:</label><br>
+        <input type="number" name="unit" step="10"><br><br>
+
+        <label for="price_per_unit">price_per_unit:</label><br>
+        <input type="number" name="price_per_unit" step="10"><br><br>
+
+        
+        <input type="submit" value="Submit"><br><br>
+        
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>product_id</th>
+            <th>name</th>
+            <th>unit</th>
+            <th>price_per_unit</th>
+            <th>no_of_products_available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.unit }}</td>
+            <td>{{ product.price_per_unit }}</td>
+            <td>{{ product.no_of_products_available }}</td>
+            <td>
+                <form action="/product1" method="POST">
+                    <input type="hidden" name="delete" value="{{ product.product_id }}">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+<script>
+    function toggleForm() {
+        var form = document.getElementById("addForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+
+    function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>
+
+</body>
+</html>

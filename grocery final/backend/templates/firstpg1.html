@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Management System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a.active {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Grocery Management System</h1>
+            <nav class="admin-nav">
+                <a href="#" class="active">Admin Dashboard</a>
+                
+            </nav>
+            <nav class="user-nav">
+                <a href="{{ url_for('signin') }}" class="active">user</a>
+                
+            </nav>
+        </div>
+    </header>
+</body>
+</html>
